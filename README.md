@@ -1,7 +1,5 @@
 # whack-a-mole
 
-https://varvy.com/pagespeed/defer-loading-javascript.html
-
 ####Instructions for Running Whack-A-Mole:
 1. Clone this repo to your local computer
 1. Open Terminal
@@ -10,7 +8,9 @@ https://varvy.com/pagespeed/defer-loading-javascript.html
 1. Open your web browser and type localhost:8000
 
 ####Javascript Page Loading Technique:
+
 https://varvy.com/pagespeed/defer-loading-javascript.html
 
 ####Minimal CSS Reset Technique:
+
 https://alligator.io/css/minimal-css-reset
