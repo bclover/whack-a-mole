@@ -14,30 +14,48 @@
 		<section class="wrapper">
 
 			<section class="heading">
-				<div class="score">
-					0
-				</div>
 				<div class="title">
 					Welcome to Whack A Mole!
 				</div>
-				<div class="time">
-					10:00
+			</section>
+
+			<section class="scoring">
+				<div id="score">
+					Score: 0
 				</div>
 			</section>
 
-
 			<section class="game-board">
-				Game Board Here
+				<div>One</div>
+				<div>Two</div>
+				<div>Three</div>
+				<div>Four</div>
+				<div>Five</div>
+				<div>Six</div>
+				<div>Seven</div>
+				<div>Eight</div>
+				<div>Nine</div>
 			</section>
 
-			<section class="controls">
-				<button>Start</button>
-				<button>Stop</button>
-				<button>Reset</button>
+			<section class="timer">
+				<di>
+					<span id="msg" class="timer__msg">Click Start to Begin!</span>
+				</di>
+				<div id="time" class=timer__display>
+					Time Left: 5
+				</div>
+				<div class="timer__controls">
+					<button id="btnStart" class="primary-btn" onclick="gameTimer.start()">Start</button>
+					<button id="btnStop" class="primary-btn" onclick="gameTimer.stop()">Stop</button>
+					<button id="btnReset" class="primary-btn" onclick="gameTimer.reset()">Reset</button>
+				</div>
 			</section>
 
 		</section>
 
+		<script type="text/javascript" src="/js/ui.js"></script>
+		<script type="text/javascript" src="/js/score.js"></script>
+		<script type="text/javascript" src="/js/timer.js"></script>
 		<script type="text/javascript">
           function downloadJSAtOnload() {
             var element = document.createElement("script");

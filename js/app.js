@@ -1,5 +1,8 @@
 function init() {
-  console.log('Init!');
+  ui.disable("btnReset");
+  ui.enable("btnStart");
+  ui.disable("btnStop");
+  ui.message('Click Start to Begin!');
 }
 
 init();

@@ -14,3 +14,6 @@ https://varvy.com/pagespeed/defer-loading-javascript.html
 #### Minimal CSS Reset Technique:
 
 https://alligator.io/css/minimal-css-reset
+
+#### Countdown Timer:
+https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
