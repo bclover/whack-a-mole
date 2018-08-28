@@ -1,5 +1,5 @@
-/* Game Timer Closure */
-var gameTimer = (function(){
+/* Game Controller */
+var game = (function(){
 
   var MSG_GAME_OVER = 'Game Over! Click Reset to Replenish the Clock!';
   var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
@@ -17,7 +17,7 @@ var gameTimer = (function(){
     score.reset();
     ui.time(timeLeft);
     ui.show('time');
-    ui.message(MSG_WHEN_READY);
+    ui.msg(MSG_WHEN_READY);
     ui.disable('btnReset');
     ui.enable('btnStart');
     ui.disable('btnStop');
@@ -25,7 +25,9 @@ var gameTimer = (function(){
 
   function start() {
     timer = setInterval(updateTimer, 1000);
-    ui.message(MSG_WHACK);
+    ui.msg(MSG_WHACK);
+    ui.show('m5-mole');
+    ui.hide('m5-hole');
     ui.enable('btnReset');
     ui.disable('btnStart');
     ui.enable('btnStop');
@@ -33,7 +35,7 @@ var gameTimer = (function(){
 
   function stop() {
     clearInterval(timer);
-    ui.message(MSG_PAUSED);
+    ui.msg(MSG_PAUSED);
     ui.enable('btnReset');
     ui.enable('btnStart');
     ui.disable('btnStop');
@@ -41,7 +43,7 @@ var gameTimer = (function(){
 
   function timerEnded() {
     clearInterval(timer);
-    ui.message(MSG_GAME_OVER);
+    ui.msg(MSG_GAME_OVER);
     ui.enable('btnReset');
     ui.disable('btnStart');
     ui.disable('btnStop');

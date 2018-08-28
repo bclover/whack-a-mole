@@ -82,11 +82,7 @@ img {
 }
 
 .hide {
-    visibility: hidden;
-}
-
-.show {
-    visibility: visible;
+    display: none;
 }
 
 .heading {
@@ -107,10 +103,13 @@ img {
 }
 
 .game-board > div {
-    border: 1px solid #0e0e0e;
-    border-radius: 5px;
-    padding: 1em;
-    width: 33%
+    background-color: #fefefe;
+    padding: .25em;
+    width: 33.33%
+}
+
+.mole {
+    cursor: pointer;
 }
 
 .feedback {

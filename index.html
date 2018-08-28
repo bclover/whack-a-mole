@@ -21,24 +21,51 @@
 				<div id="score">Score: 0</div>
 				<section class="timer">
 					<div class="timer__controls">
-						<button id="btnStart" class="primary-btn" onclick="gameTimer.start()">Start</button>
-						<button id="btnStop" class="primary-btn" onclick="gameTimer.stop()">Stop</button>
-						<button id="btnReset" class="primary-btn" onclick="gameTimer.reset()">Reset</button>
+						<button id="btnStart" class="primary-btn" onclick="game.start()">Start</button>
+						<button id="btnStop" class="primary-btn" onclick="game.stop()">Stop</button>
+						<button id="btnReset" class="primary-btn" onclick="game.reset()">Reset</button>
 					</div>
 				</section>
 				<div id="time" class=timer__display>Time: 5</div>
 			</section>
 
 			<section class="game-board">
-				<div>One</div>
-				<div>Two</div>
-				<div>Three</div>
-				<div>Four</div>
-				<div>Five</div>
-				<div>Six</div>
-				<div>Seven</div>
-				<div>Eight</div>
-				<div>Nine</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m1" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m2" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m3" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m4" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img id="m5-hole" src=img/mole-invisible.png class="show">
+					<img id="m5-mole" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m6" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m7" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m8" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
+				<div class="game-board__tile">
+					<img src=img/mole-invisible.png class="show">
+					<img id="m9" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+				</div>
 			</section>
 
 			<div>
@@ -49,7 +76,8 @@
 
 		<script type="text/javascript" src="/js/ui.js"></script>
 		<script type="text/javascript" src="/js/score.js"></script>
-		<script type="text/javascript" src="/js/timer.js"></script>
+		<script type="text/javascript" src="/js/game.js"></script>
+		<script type="text/javascript" src="/js/mole.js"></script>
 		<script type="text/javascript">
           function downloadJSAtOnload() {
             var element = document.createElement("script");

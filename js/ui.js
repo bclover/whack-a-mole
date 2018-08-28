@@ -1,4 +1,4 @@
-/* Render */
+/* UI Controller */
 
 var ui = (function(document){
 
@@ -12,8 +12,8 @@ var ui = (function(document){
     el.removeAttribute('disabled');
   }
 
-  function message(msg) {
-    document.getElementById('msg').innerHTML = msg;
+  function msg(txt) {
+    document.getElementById('msg').innerHTML = txt;
   }
 
   function hide(element) {
@@ -38,7 +38,7 @@ var ui = (function(document){
     disable: disable,
     enable: enable,
     hide: hide,
-    message: message,
+    msg: msg,
     score: score,
     show: show,
     time: time
