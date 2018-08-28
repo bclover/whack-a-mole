@@ -16,18 +16,24 @@ var ui = (function(document){
     document.getElementById('msg').innerHTML = txt;
   }
 
-  function hide(element) {
-    var el = document.getElementById(element);
-    el.classList.add('hide');
+  function hide(id) {
+    console.log('hide():', id);
+    var el = document.getElementById(id);
+    if(el) {
+      el.classList.add('hide');
+    }
   }
 
   function score(value) {
     document.getElementById('score').innerHTML = 'Score: ' + value;
   }
 
-  function show(element) {
-    var el = document.getElementById(element);
-    el.classList.remove('hide');
+  function show(id) {
+    console.log('show:', id);
+    var el = document.getElementById(id);
+    if(el) {
+      el.classList.remove('hide');
+    }
   }
 
   function time(value) {

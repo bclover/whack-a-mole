@@ -6,14 +6,20 @@ var game = (function(){
   var MSG_WHACK = 'CLICK THOSE DAGNABBIT MOLES!';
   var MSG_WHEN_READY = 'Click Start When You\'re Ready!';
 
+  var paused = true;
   var resumeTime;
   var timer;
   var timeLeft = 5;
+
+  function isPaused() {
+    return paused;
+  }
 
   function reset() {
     clearInterval(timer);
     resumeTime = null;
     timeLeft = 5;
+    moles.reset();
     score.reset();
     ui.time(timeLeft);
     ui.show('time');
@@ -24,10 +30,10 @@ var game = (function(){
   }
 
   function start() {
+    paused = false;
     timer = setInterval(updateTimer, 1000);
     ui.msg(MSG_WHACK);
-    ui.show('m5-mole');
-    ui.hide('m5-hole');
+    moles.add();
     ui.enable('btnReset');
     ui.disable('btnStart');
     ui.enable('btnStop');
@@ -35,14 +41,16 @@ var game = (function(){
 
   function stop() {
     clearInterval(timer);
+    paused = true;
     ui.msg(MSG_PAUSED);
     ui.enable('btnReset');
     ui.enable('btnStart');
     ui.disable('btnStop');
   }
 
-  function timerEnded() {
+  function ended() {
     clearInterval(timer);
+    paused = true;
     ui.msg(MSG_GAME_OVER);
     ui.enable('btnReset');
     ui.disable('btnStart');
@@ -53,10 +61,10 @@ var game = (function(){
     (resumeTime) ? timeLeft = resumeTime : timeLeft = timeLeft;
     ui.time(--timeLeft);
     if (timeLeft === 0) {
-      timerEnded();
+      ended();
     }
   }
 
-  return { reset: reset, start: start, stop: stop };
+  return { isPaused: isPaused, reset: reset, start: start, stop: stop };
 
 })();
