@@ -31,7 +31,7 @@ var ui = (function(document){
   }
 
   function time(value) {
-    document.getElementById('time').innerHTML = 'Time Left: ' + value;
+    document.getElementById('time').innerHTML = 'Time: ' + value;
   }
 
   return {

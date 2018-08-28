@@ -3,6 +3,7 @@ var gameTimer = (function(){
 
   var MSG_GAME_OVER = 'Game Over! Click Reset to Replenish the Clock!';
   var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
+  var MSG_WHACK = 'WHACK THOSE DAGNABBIT MOLES!';
   var MSG_WHEN_READY = 'Click Start When You\'re Ready!';
 
   var resumeTime;
@@ -24,7 +25,7 @@ var gameTimer = (function(){
 
   function start() {
     timer = setInterval(updateTimer, 1000);
-    ui.message('');
+    ui.message(MSG_WHACK);
     ui.enable('btnReset');
     ui.disable('btnStart');
     ui.enable('btnStop');
@@ -40,7 +41,6 @@ var gameTimer = (function(){
 
   function timerEnded() {
     clearInterval(timer);
-    ui.hide('time');
     ui.message(MSG_GAME_OVER);
     ui.enable('btnReset');
     ui.disable('btnStart');

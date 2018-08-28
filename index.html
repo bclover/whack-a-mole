@@ -14,15 +14,19 @@
 		<section class="wrapper">
 
 			<section class="heading">
-				<div class="title">
-					Welcome to Whack A Mole!
-				</div>
+				<div class="title">Whack A Mole!</div>
 			</section>
 
-			<section class="scoring">
-				<div id="score">
-					Score: 0
-				</div>
+			<section class="feedback">
+				<div id="score">Score: 0</div>
+				<section class="timer">
+					<div class="timer__controls">
+						<button id="btnStart" class="primary-btn" onclick="gameTimer.start()">Start</button>
+						<button id="btnStop" class="primary-btn" onclick="gameTimer.stop()">Stop</button>
+						<button id="btnReset" class="primary-btn" onclick="gameTimer.reset()">Reset</button>
+					</div>
+				</section>
+				<div id="time" class=timer__display>Time: 5</div>
 			</section>
 
 			<section class="game-board">
@@ -37,19 +41,9 @@
 				<div>Nine</div>
 			</section>
 
-			<section class="timer">
-				<di>
-					<span id="msg" class="timer__msg">Click Start to Begin!</span>
-				</di>
-				<div id="time" class=timer__display>
-					Time Left: 5
-				</div>
-				<div class="timer__controls">
-					<button id="btnStart" class="primary-btn" onclick="gameTimer.start()">Start</button>
-					<button id="btnStop" class="primary-btn" onclick="gameTimer.stop()">Stop</button>
-					<button id="btnReset" class="primary-btn" onclick="gameTimer.reset()">Reset</button>
-				</div>
-			</section>
+			<div>
+				<span id="msg" class="timer__msg">Click Start to Begin!</span>
+			</div>
 
 		</section>
 
