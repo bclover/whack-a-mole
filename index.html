@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Whack a Mole!</title>
-		<meta name="description" content="Whack a Mole Game">
+		<meta name="description" content="Click-A-Mole-Game">
 		<meta name="author" content="Bryan Clover">
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
@@ -13,12 +13,17 @@
 
 		<section class="wrapper">
 
+			<!-- GAME TITLE -->
 			<section class="heading">
-				<div class="title">Whack A Mole!</div>
+				<div class="title">Click-A-Mole-Game</div>
 			</section>
 
 			<section class="feedback">
+
+				<!-- SCORE -->
 				<div id="score">Score: 0</div>
+
+				<!-- CONTROLS -->
 				<section class="timer">
 					<div class="timer__controls">
 						<button id="btnStart" class="primary-btn" onclick="game.start()">Start</button>
@@ -26,70 +31,139 @@
 						<button id="btnReset" class="primary-btn" onclick="game.reset()">Reset</button>
 					</div>
 				</section>
+
+				<!-- TIME -->
 				<div id="time" class=timer__display>Time: 5</div>
+
 			</section>
 
 			<section class="game-board">
+
+				<!-- TILE 1 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m1" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m1-hole" src=img/mole-invisible.png class="show" >
+					<img id="m1-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 2 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m2" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m2-hole" src=img/mole-invisible.png class="show">
+					<img id="m2-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 3 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m3" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m3-hole" src=img/mole-invisible.png class="show">
+					<img id="m3-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 4 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m4" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m4-hole" src=img/mole-invisible.png class="show">
+					<img id="m4-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 5 -->
+
 				<div class="game-board__tile">
 					<img id="m5-hole" src=img/mole-invisible.png class="show">
-					<img id="m5-mole" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m5-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 6 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m6" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m6-hole" src=img/mole-invisible.png class="show">
+					<img id="m6"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 7 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m7" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m7-hole" src=img/mole-invisible.png class="show">
+					<img id="m7-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 8 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m8" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m8-hole" src=img/mole-invisible.png class="show">
+					<img id="m8-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
+				<!-- TILE 9 -->
 				<div class="game-board__tile">
-					<img src=img/mole-invisible.png class="show">
-					<img id="m9" src=img/mole-visible.png class="hide mole" onclick="score.increment(event)">
+					<img id="m9-hole" src=img/mole-invisible.png class="show">
+					<img id="m9-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="score.increment(event)"
+					>
 				</div>
+
 			</section>
 
+			<!-- USER FEEDBACK MESSAGES -->
 			<div>
 				<span id="msg" class="timer__msg">Click Start to Begin!</span>
 			</div>
 
 		</section>
 
+		<!-- LOAD PRELIMINARY SCRIPTS -->
 		<script type="text/javascript" src="/js/ui.js"></script>
 		<script type="text/javascript" src="/js/score.js"></script>
 		<script type="text/javascript" src="/js/game.js"></script>
 		<script type="text/javascript" src="/js/mole.js"></script>
+
+		<!-- AFTER PAGE LOADS -->
 		<script type="text/javascript">
-          function downloadJSAtOnload() {
+
+          function pageLoaded() {
             var element = document.createElement("script");
             element.src = "/js/app.js";
             document.body.appendChild(element);
           }
-          if (window.addEventListener)
-            window.addEventListener("load", downloadJSAtOnload, false);
-          else if (window.attachEvent)
-            window.attachEvent("onload", downloadJSAtOnload);
-          else window.onload = downloadJSAtOnload;
+
+          if (window.addEventListener) {
+            window.addEventListener("load", pageLoaded, false);
+          } else if (window.attachEvent) {
+            window.attachEvent("onload", pageLoaded);
+          } else  {
+            window.onload = pageLoaded;
+          }
+
 		</script>
 
 	</body>
+
 </html>

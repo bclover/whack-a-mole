@@ -17,3 +17,13 @@ https://alligator.io/css/minimal-css-reset
 
 #### Countdown Timer:
 https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
+
+#### Possible Enhancements:
+* Create a High Score List
+* Dynamically create holes & moles on init()
+* Add sound effects
+* Add CSS transitions / effects
+* Move text into a "Constants Closure"
+* Use a JS framework
+* Optimize CSS & use BEM syntax better
+* Make WCAG 2.0 Accessibility Compliant

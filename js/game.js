@@ -3,7 +3,7 @@ var game = (function(){
 
   var MSG_GAME_OVER = 'Game Over! Click Reset to Replenish the Clock!';
   var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
-  var MSG_WHACK = 'WHACK THOSE DAGNABBIT MOLES!';
+  var MSG_WHACK = 'CLICK THOSE DAGNABBIT MOLES!';
   var MSG_WHEN_READY = 'Click Start When You\'re Ready!';
 
   var resumeTime;
