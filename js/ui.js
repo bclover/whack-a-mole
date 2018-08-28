@@ -17,7 +17,7 @@ var ui = (function(document){
   }
 
   function hide(id) {
-    console.log('hide():', id);
+    console.log('ui hide() ', id);
     var el = document.getElementById(id);
     if(el) {
       el.classList.add('hide');
@@ -29,7 +29,7 @@ var ui = (function(document){
   }
 
   function show(id) {
-    console.log('show:', id);
+    console.log('ui.show() ', id);
     var el = document.getElementById(id);
     if(el) {
       el.classList.remove('hide');
