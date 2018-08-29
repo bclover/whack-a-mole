@@ -6,6 +6,7 @@ var mole = (function(){
   var LIFE_MAX = 2000;
   var LIFE_MIN = 250;
   var MOLE = 'mole';
+  var RADIX = 10;
 
   var emptyHoles = [1,2,3,4,5,6,7,8,9];
   var moleLifeTimer = [];
@@ -43,22 +44,26 @@ var mole = (function(){
   }
 
   function createMole(int) {
-    show(int, MOLE);
-    hide(int, HOLE);
-    visibleMoles.push(int);
-    emptyHoles.splice(emptyHoles.indexOf(int), 1);
+    var moleNum = parseInt(int, RADIX);
+    show(moleNum, MOLE);
+    hide(moleNum, HOLE);
+    visibleMoles.push(moleNum);
+    emptyHoles.splice(emptyHoles.indexOf(moleNum), 1);
     startMoleLife();
   }
 
   function destroyMole(int) {
-    show(int, HOLE);
-    hide(int, MOLE);
-    emptyHoles.push(int);
-    var moleToRemove = visibleMoles.indexOf(parseInt(int));
-    visibleMoles.splice(moleToRemove, 1);
+    if(int !== undefined) {
+      var moleNum = parseInt(int, RADIX);
+      show(moleNum, HOLE);
+      hide(moleNum, MOLE);
+      emptyHoles.push(moleNum);
+      var moleToRemove = visibleMoles.indexOf(moleNum);
+      visibleMoles.splice(moleToRemove, 1);
+    }
   }
 
-  function endMoleLife(int) {
+  function endMoleLife() {
     destroyMole(visibleMoles[0]);
     clearInterval(moleLifeTimer);
     if(game.getTimeLeft() > 0 && !game.isPaused()){
@@ -86,8 +91,9 @@ var mole = (function(){
     }
   }
 
-  function holeIsEmpty(num) {
-    var index = emptyHoles.indexOf(num);
+  function holeIsEmpty(int) {
+    var holeNum = parseInt(int, RADIX);
+    var index = emptyHoles.indexOf(holeNum);
     if (index > -1) {
       return true;
     } else {
