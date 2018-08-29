@@ -22,6 +22,11 @@ https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-co
 https://stackoverflow.com/questions/27858599/custom-mouse-pointer-not-working-in-ie11
 https://css-tricks.com/almanac/properties/c/cursor/
 
+#### Browser Support:
+During development, the game is tested in the following browsers:
+* Chrome - Version 68.0.3440.106 (Official Build) (64-bit)
+* Internet Explorer - Version 11.0.9600.19100 on Windows 7 running in a virtual machine via Oracle's VirtualBox
+
 #### Possible Enhancements:
 * Create a High Score List
 * Dynamically create holes & moles on init()
