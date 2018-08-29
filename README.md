@@ -26,11 +26,9 @@ https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-co
 * Move text into a "Constants Closure"
 * Optimize CSS & use BEM syntax better
 * Make Accessible to WCAG 2.0 Standard
-* Make "mole taunts" when click misses (random couple of sounds)
-* Add "ouch sounds" for when mole is hit
 * Add CSS effects when mole is hit
 * Add CSS effects to make mole appear to rise out of or go down in hole
-* Add media querys to tweak CSS for various sizes / devices / aspect ratios
+* Add media queries to tweak CSS for various sizes / devices / aspect ratios
 * Make a fancy countdown circle thingy instead of using text to display time.
 * Use a JS framework
 
