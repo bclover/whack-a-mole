@@ -19,6 +19,10 @@ var game = (function(){
 
   /* PUBLIC METHODS ************************************************************************/
 
+  function getTimeLeft() {
+    return timeLeft;
+  }
+
   function init() {
     ui.disable(BTN_RESET);
     ui.enable(BTN_START);
@@ -68,7 +72,6 @@ var game = (function(){
   function ended() {
     paused = true;
     clearInterval(timer);
-    mole.reset();
     ui.msg(MSG_GAME_OVER);
     ui.enable(BTN_RESET);
     ui.disable(BTN_START);
@@ -84,7 +87,14 @@ var game = (function(){
   }
 
   /* EXPOSE METHODS ************************************************************************/
-  return { init: init, isPaused: isPaused, reset: reset, start: start, stop: stop };
+  return {
+    getTimeLeft: getTimeLeft,
+    init: init,
+    isPaused: isPaused,
+    reset: reset,
+    start: start,
+    stop: stop
+  };
 
 })();
 

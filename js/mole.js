@@ -86,7 +86,7 @@ var mole = (function(){
       createMole(emptyHoles[0]);
     }
 
-    if(emptyHoles.length > 1) {
+    if(emptyHoles.length > 1 && game.getTimeLeft() > 1) {
       add();
     }
   }
