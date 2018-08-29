@@ -5,6 +5,7 @@
 body, html {
     box-sizing: border-box;
     color: #595959;
+    cursor: url('../img/mallet.png'), url('../img/mallet.cur'), n-resize;;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     height: 100%;
@@ -108,8 +109,13 @@ img {
     width: 33.33%
 }
 
-.mole {
-    cursor: pointer;
+.mole, .hole {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .feedback {

@@ -22,4 +22,4 @@ var score = (function(){
   /* EXPOSE METHODS ************************************************************************/
   return { increment: increment, reset: reset };
 
-})(document);
+})();

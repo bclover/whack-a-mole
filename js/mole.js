@@ -25,10 +25,15 @@ var mole = (function(){
 
   function clicked(event) {
     if(game.isNotPaused()) {
+      sound.playSound('whack');
       score.increment(event);
       var id = event.target.id.charAt(1);
       destroyMole(id);
     }
+  }
+
+  function escaped() {
+    sound.playSound('taunt', getRandomInt(1, sound.TAUNTS.length));
   }
 
   function reset() {
@@ -97,6 +102,11 @@ var mole = (function(){
     moleLifeTimer = setInterval(function() { endMoleLife(); }, lifeTime);
   }
 
+  function tauntUser(taunt) {
+    var taunt = new Audio(AUDIO_DIR + taunt);
+    taunt.play();
+  }
+
   function tryAnotherHole() {
     if(emptyHoles.length === 1) {
       createMole(emptyHoles[0]);
@@ -106,6 +116,6 @@ var mole = (function(){
   }
 
   /* EXPOSE METHODS ************************************************************************/
-  return { add: add, clicked: clicked, reset: reset };
+  return { add: add, clicked: clicked, escaped: escaped, reset: reset };
 
 })();

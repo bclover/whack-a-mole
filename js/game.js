@@ -4,7 +4,7 @@ var game = (function(){
   // Constants
   var SECOND = 1000;
   var MAX_TIME = 20;
-  var MSG_GAME_OVER = 'Game Over! Click Reset to Replenish the Clock!';
+  var MSG_GAME_OVER = 'Game Over! Click Restart to Replenish the Clock!';
   var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
   var MSG_START = 'Click Start to Begin!';
   var MSG_WHACK = 'CLICK THOSE DANGNABBIT MOLES!';
@@ -31,6 +31,8 @@ var game = (function(){
   }
 
   function reset() {
+    paused = true;
+    sound.playSound('restart');
     clearInterval(timer);
     resumeTime = null;
     timeLeft = MAX_TIME;
@@ -41,6 +43,7 @@ var game = (function(){
   }
 
   function start() {
+    sound.playSound('begin');
     paused = false;
     timer = setInterval(updateTimer, SECOND);
     mole.add();
@@ -63,10 +66,12 @@ var game = (function(){
     clearInterval(timer);
     ui.msg(MSG_GAME_OVER);
     ui.setControls('end');
+    sound.playSound('gameOver');
   }
 
   function updateTimer() {
     (resumeTime) ? timeLeft = resumeTime : timeLeft = timeLeft;
+    sound.playSound('tick');
     ui.updateTime(--timeLeft);
     if (timeLeft === 0) {
       gameOver();

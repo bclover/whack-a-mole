@@ -28,7 +28,7 @@
 					<div class="timer__controls">
 						<button id="btnStart" class="primary-btn" onclick="game.start()">Start</button>
 						<button id="btnStop" class="primary-btn" onclick="game.stop()">Stop</button>
-						<button id="btnReset" class="primary-btn" onclick="game.reset()">Reset</button>
+						<button id="btnReset" class="primary-btn" onclick="game.reset()">Restart</button>
 					</div>
 				</section>
 
@@ -41,7 +41,10 @@
 
 				<!-- TILE 1 -->
 				<div class="game-board__tile">
-					<img id="t1-hole" src=img/mole-invisible.png class="show" >
+					<img id="t1-hole" src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t1-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -51,7 +54,10 @@
 
 				<!-- TILE 2 -->
 				<div class="game-board__tile">
-					<img id="t2-hole" src=img/mole-invisible.png class="show">
+					<img id="t2-hole" src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t2-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -61,7 +67,11 @@
 
 				<!-- TILE 3 -->
 				<div class="game-board__tile">
-					<img id="t3-hole" src=img/mole-invisible.png class="show">
+					<img id="t3-hole"
+					     src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t3-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -71,7 +81,10 @@
 
 				<!-- TILE 4 -->
 				<div class="game-board__tile">
-					<img id="t4-hole" src=img/mole-invisible.png class="show">
+					<img id="t4-hole" src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t4-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -82,7 +95,11 @@
 				<!-- TILE 5 -->
 
 				<div class="game-board__tile">
-					<img id="t5-hole" src=img/mole-invisible.png class="show">
+					<img id="t5-hole"
+					     src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t5-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -92,7 +109,11 @@
 
 				<!-- TILE 6 -->
 				<div class="game-board__tile">
-					<img id="t6-hole" src=img/mole-invisible.png class="show">
+					<img id="t6-hole"
+					     src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t6-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -102,7 +123,11 @@
 
 				<!-- TILE 7 -->
 				<div class="game-board__tile">
-					<img id="t7-hole" src=img/mole-invisible.png class="show">
+					<img id="t7-hole"
+					     src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t7-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -112,7 +137,11 @@
 
 				<!-- TILE 8 -->
 				<div class="game-board__tile">
-					<img id="t8-hole" src=img/mole-invisible.png class="show">
+					<img id="t8-hole"
+					     src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
 					<img id="t8-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
@@ -122,8 +151,16 @@
 
 				<!-- TILE 9 -->
 				<div class="game-board__tile">
-					<img id="t9-hole" src=img/mole-invisible.png class="show">
-					<img id="t9-mole" src=img/mole-visible.png class="hide mole" onclick="mole.clicked(event)">
+					<img id="t9-hole"
+					     src=img/mole-invisible.png
+					     class="show hole"
+					     onclick="mole.escaped()"
+					>
+					<img id="t9-mole"
+					     src=img/mole-visible.png
+					     class="hide mole"
+					     onclick="mole.clicked(event)"
+					>
 				</div>
 
 			</section>
@@ -138,6 +175,7 @@
 		<!-- LOAD PRELIMINARY SCRIPTS -->
 		<script type="text/javascript" src="/js/ui.js"></script>
 		<script type="text/javascript" src="/js/score.js"></script>
+		<script type="text/javascript" src="/js/sound.js"></script>
 		<script type="text/javascript" src="/js/game.js"></script>
 		<script type="text/javascript" src="/js/mole.js"></script>
 
