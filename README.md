@@ -1,6 +1,6 @@
 # whack-a-mole
 
-#### Instructions for Running Click-A-Mole:
+#### Instructions for Running Click-A-Mole: (assuming OS X)
 1. Clone this repo to your local computer
 1. Open Terminal
 1. Navigate to the whack-a-mole directory
