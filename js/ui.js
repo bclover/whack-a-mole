@@ -17,12 +17,18 @@ var ui = (function(document){
     el.removeAttribute('disabled');
   }
 
+  function formatValue(value) {
+    if (value < 10) {
+      return value = '0' + value;
+    } else {
+      return value;
+    }
+  }
   function msg(txt) {
     document.getElementById('msg').innerHTML = txt;
   }
 
   function hide(id) {
-    // console.log('ui hide() ', id);
     var el = document.getElementById(id);
     if(el) {
       el.classList.add('hide');
@@ -30,11 +36,10 @@ var ui = (function(document){
   }
 
   function score(value) {
-    document.getElementById('score').innerHTML = LABEL_SCORE + value;
+    document.getElementById('score').innerHTML = LABEL_SCORE + formatValue(value);
   }
 
   function show(id) {
-    // console.log('ui.show() ', id);
     var el = document.getElementById(id);
     if(el) {
       el.classList.remove('hide');
@@ -42,7 +47,7 @@ var ui = (function(document){
   }
 
   function time(value) {
-    document.getElementById('time').innerHTML = LABEL_TIME + value;
+    document.getElementById('time').innerHTML = LABEL_TIME + formatValue(value);
   }
 
   /* EXPOSE METHODS ************************************************************************/

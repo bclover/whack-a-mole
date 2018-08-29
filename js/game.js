@@ -5,6 +5,7 @@ var game = (function(){
   var BTN_START = 'btnStart';
   var BTN_STOP = 'btnStop';
   var SECOND = 1000;
+  var MAX_TIME = 20;
   var MSG_GAME_OVER = 'Game Over! Click Reset to Replenish the Clock!';
   var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
   var MSG_START = 'Click Start to Begin!';
@@ -15,7 +16,7 @@ var game = (function(){
   var paused = true;
   var resumeTime;
   var timer;
-  var timeLeft = 5;
+  var timeLeft = MAX_TIME;
 
   /* PUBLIC METHODS ************************************************************************/
 
@@ -37,7 +38,7 @@ var game = (function(){
   function reset() {
     clearInterval(timer);
     resumeTime = null;
-    timeLeft = 5;
+    timeLeft = MAX_TIME;
     mole.reset();
     score.reset();
     ui.time(timeLeft);

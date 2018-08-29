@@ -3,9 +3,12 @@ var mole = (function(){
 
   var HOLE = 'hole';
   var MAX_NUM_OF_MOLES = 9;
+  var LIFE_MAX = 2000;
+  var LIFE_MIN = 250;
   var MOLE = 'mole';
 
   var emptyHoles = [1,2,3,4,5,6,7,8,9];
+  var moleLifeTimer = [];
   var visibleMoles = [];
 
   /* PUBLIC METHODS ************************************************************************/
@@ -28,24 +31,23 @@ var mole = (function(){
   }
 
   function reset() {
-    if (visibleMoles.length > 0) {
-      var limit = MAX_NUM_OF_MOLES + 1;
-      for (var i=0; i<limit; i++) {
-        show(visibleMoles[i], HOLE);
-        hide(visibleMoles[i], MOLE);
-      }
-      emptyHoles = [1,2,3,4,5,6,7,8,9];
-      visibleMoles = [];
-    }
+    hideAllMoles();
+    clearArrays();
   }
 
   /* PRIVATE METHODS ************************************************************************/
+
+  function clearArrays() {
+    emptyHoles = [1,2,3,4,5,6,7,8,9];
+    visibleMoles = [];
+  }
 
   function createMole(int) {
     show(int, MOLE);
     hide(int, HOLE);
     visibleMoles.push(int);
     emptyHoles.splice(emptyHoles.indexOf(int), 1);
+    startMoleLife();
   }
 
   function destroyMole(int) {
@@ -56,6 +58,14 @@ var mole = (function(){
     visibleMoles.splice(moleToRemove, 1);
   }
 
+  function endMoleLife(int) {
+    destroyMole(visibleMoles[0]);
+    clearInterval(moleLifeTimer);
+    if(game.getTimeLeft() > 0 && !game.isPaused()){
+      add();
+    }
+  }
+
   function getRandomInt(min, max) {
     var num = Math.floor(Math.random() * (max - min + 1)) + min;
     return num;
@@ -64,6 +74,16 @@ var mole = (function(){
   function hide(int, obj) {
     var id = 't' + int + '-' + obj;
     ui.hide(id);
+  }
+
+  function hideAllMoles() {
+    if (visibleMoles.length > 0) {
+      var limit = MAX_NUM_OF_MOLES+1;
+      for (var i = 0; i < limit; i++) {
+        show(visibleMoles[ i ], HOLE);
+        hide(visibleMoles[ i ], MOLE);
+      }
+    }
   }
 
   function holeIsEmpty(num) {
@@ -80,14 +100,18 @@ var mole = (function(){
     ui.show(id);
   }
 
-  function tryAnotherHole() {
+  function startMoleLife() {
+    var lifeTime = getRandomInt(LIFE_MIN, LIFE_MAX);
+    moleLifeTimer = setInterval(function() { endMoleLife(); }, lifeTime);
+  }
 
+  function tryAnotherHole() {
     if(emptyHoles.length === 1) {
       createMole(emptyHoles[0]);
     }
 
-    if(emptyHoles.length > 1 && game.getTimeLeft() > 1) {
-      add();
+    if(emptyHoles.length > 1) {
+      mole.add();
     }
   }
 
