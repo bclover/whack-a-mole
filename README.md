@@ -40,6 +40,7 @@ During development, the game is tested in the following browsers:
 * Add media queries to tweak CSS for various sizes / devices / aspect ratios
 * Make a fancy countdown circle thingy instead of using text to display time.
 * Build a Vue, Angular, React JS version
+* Add a grassy background
 * Add unit testing
 
 
