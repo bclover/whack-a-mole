@@ -39,7 +39,7 @@ During development, the game is tested in the following browsers:
 * Animate mallet on click?
 * Add media queries to tweak CSS for various sizes / devices / aspect ratios
 * Make a fancy countdown circle thingy instead of using text to display time.
-* Build aVue, Angular, React JS version
+* Build a Vue, Angular, React JS version
 * Add unit testing
 
 
