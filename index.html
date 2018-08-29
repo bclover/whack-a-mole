@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Whack a Mole!</title>
+		<title>Click a Mole!</title>
 		<meta name="description" content="Click-A-Mole-Game">
 		<meta name="author" content="Bryan Clover">
 		<link rel="stylesheet" href="css/styles.css">
@@ -41,93 +41,89 @@
 
 				<!-- TILE 1 -->
 				<div class="game-board__tile">
-					<img id="m1-hole" src=img/mole-invisible.png class="show" >
-					<img id="m1-mole"
+					<img id="t1-hole" src=img/mole-invisible.png class="show" >
+					<img id="t1-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 2 -->
 				<div class="game-board__tile">
-					<img id="m2-hole" src=img/mole-invisible.png class="show">
-					<img id="m2-mole"
+					<img id="t2-hole" src=img/mole-invisible.png class="show">
+					<img id="t2-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 3 -->
 				<div class="game-board__tile">
-					<img id="m3-hole" src=img/mole-invisible.png class="show">
-					<img id="m3-mole"
+					<img id="t3-hole" src=img/mole-invisible.png class="show">
+					<img id="t3-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 4 -->
 				<div class="game-board__tile">
-					<img id="m4-hole" src=img/mole-invisible.png class="show">
-					<img id="m4-mole"
+					<img id="t4-hole" src=img/mole-invisible.png class="show">
+					<img id="t4-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 5 -->
 
 				<div class="game-board__tile">
-					<img id="m5-hole" src=img/mole-invisible.png class="show">
-					<img id="m5-mole"
+					<img id="t5-hole" src=img/mole-invisible.png class="show">
+					<img id="t5-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 6 -->
 				<div class="game-board__tile">
-					<img id="m6-hole" src=img/mole-invisible.png class="show">
-					<img id="m6-mole"
+					<img id="t6-hole" src=img/mole-invisible.png class="show">
+					<img id="t6-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 7 -->
 				<div class="game-board__tile">
-					<img id="m7-hole" src=img/mole-invisible.png class="show">
-					<img id="m7-mole"
+					<img id="t7-hole" src=img/mole-invisible.png class="show">
+					<img id="t7-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 8 -->
 				<div class="game-board__tile">
-					<img id="m8-hole" src=img/mole-invisible.png class="show">
-					<img id="m8-mole"
+					<img id="t8-hole" src=img/mole-invisible.png class="show">
+					<img id="t8-mole"
 					     src=img/mole-visible.png
 					     class="hide mole"
-					     onclick="score.increment(event)"
+					     onclick="mole.clicked(event)"
 					>
 				</div>
 
 				<!-- TILE 9 -->
 				<div class="game-board__tile">
-					<img id="m9-hole" src=img/mole-invisible.png class="show">
-					<img id="m9-mole"
-					     src=img/mole-visible.png
-					     class="hide mole"
-					     onclick="score.increment(event)"
-					>
+					<img id="t9-hole" src=img/mole-invisible.png class="show">
+					<img id="t9-mole" src=img/mole-visible.png class="hide mole" onclick="mole.clicked(event)">
 				</div>
 
 			</section>
@@ -150,7 +146,7 @@
 
           function pageLoaded() {
             var element = document.createElement("script");
-            element.src = "/js/app.js";
+            element.src = "/js/game.js";
             document.body.appendChild(element);
           }
 

@@ -2,6 +2,11 @@
 
 var ui = (function(document){
 
+  var LABEL_SCORE = 'Score: ';
+  var LABEL_TIME = 'Time: ';
+
+  /* PUBLIC METHODS ************************************************************************/
+
   function disable(element) {
     var el = document.getElementById(element);
     el.setAttribute('disabled', "");
@@ -17,7 +22,7 @@ var ui = (function(document){
   }
 
   function hide(id) {
-    console.log('ui hide() ', id);
+    // console.log('ui hide() ', id);
     var el = document.getElementById(id);
     if(el) {
       el.classList.add('hide');
@@ -25,11 +30,11 @@ var ui = (function(document){
   }
 
   function score(value) {
-    document.getElementById('score').innerHTML = 'Score: ' + value;
+    document.getElementById('score').innerHTML = LABEL_SCORE + value;
   }
 
   function show(id) {
-    console.log('ui.show() ', id);
+    // console.log('ui.show() ', id);
     var el = document.getElementById(id);
     if(el) {
       el.classList.remove('hide');
@@ -37,9 +42,10 @@ var ui = (function(document){
   }
 
   function time(value) {
-    document.getElementById('time').innerHTML = 'Time: ' + value;
+    document.getElementById('time').innerHTML = LABEL_TIME + value;
   }
 
+  /* EXPOSE METHODS ************************************************************************/
   return {
     disable: disable,
     enable: enable,

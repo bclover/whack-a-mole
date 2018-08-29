@@ -1,25 +1,59 @@
 /* Mole Controller */
-var moles = (function(){
+var mole = (function(){
+
+  var HOLE = 'hole';
+  var MAX_NUM_OF_MOLES = 9;
+  var MOLE = 'mole';
 
   var emptyHoles = [1,2,3,4,5,6,7,8,9];
   var visibleMoles = [];
 
+  /* PUBLIC METHODS ************************************************************************/
+
   function add() {
-    var int = getRandomInt(1, 9);
-    console.log('int:' + int);
-    if (isHoleEmpty(int)) {
-      show(int, 'mole');
-      hide(int, 'hole');
-      visibleMoles.push(int);
-      console.log('Visible Moles: ', visibleMoles);
-      emptyHoles.splice(emptyHoles.indexOf(int), 1);
-      console.log('Empty Holes: ', emptyHoles);
+    var int = getRandomInt(1, MAX_NUM_OF_MOLES);
+    if (holeIsEmpty(int)) {
+      createMole(int);
     } else {
-      if(emptyHoles.length > 1) {
-        console.log('MOLE ALREADY VIS TRY AGAIN!');
-        add();
+      tryAnotherHole();
+    }
+  }
+
+  function clicked(event) {
+    if(!game.isPaused()) {
+      score.increment(event);
+      var id = event.target.id.charAt(1);
+      destroyMole(id);
+    }
+  }
+
+  function reset() {
+    if (visibleMoles.length > 0) {
+      var limit = MAX_NUM_OF_MOLES + 1;
+      for (var i=0; i<limit; i++) {
+        show(visibleMoles[i], HOLE);
+        hide(visibleMoles[i], MOLE);
       }
-    };
+      emptyHoles = [1,2,3,4,5,6,7,8,9];
+      visibleMoles = [];
+    }
+  }
+
+  /* PRIVATE METHODS ************************************************************************/
+
+  function createMole(int) {
+    show(int, MOLE);
+    hide(int, HOLE);
+    visibleMoles.push(int);
+    emptyHoles.splice(emptyHoles.indexOf(int), 1);
+  }
+
+  function destroyMole(int) {
+    show(int, HOLE);
+    hide(int, MOLE);
+    emptyHoles.push(int);
+    var moleToRemove = visibleMoles.indexOf(parseInt(int));
+    visibleMoles.splice(moleToRemove, 1);
   }
 
   function getRandomInt(min, max) {
@@ -28,14 +62,13 @@ var moles = (function(){
   }
 
   function hide(int, obj) {
-    var id = 'm' + int + '-' + obj;
+    var id = 't' + int + '-' + obj;
     ui.hide(id);
   }
 
-  function isHoleEmpty(num) {
+  function holeIsEmpty(num) {
     var index = emptyHoles.indexOf(num);
     if (index > -1) {
-      console.log('***** IS EMPTY ****');
       return true;
     } else {
       return false;
@@ -43,24 +76,22 @@ var moles = (function(){
   }
 
   function show(int, obj) {
-    var id = 'm' + int + '-' + obj;
+    var id = 't' + int + '-' + obj;
     ui.show(id);
   }
 
-  function reset() {
-    console.log('visibleMoles:', visibleMoles);
-    if (visibleMoles.length > 0) {
-      var loopEnd = visibleMoles.length;
-      for (var i=0; i<loopEnd; i++) {
-        show(visibleMoles[i], 'hole');
-        hide(visibleMoles[i], 'mole');
-      }
-      emptyHoles = [1,2,3,4,5,6,7,8,9];
-      visibleMoles = [];
+  function tryAnotherHole() {
+
+    if(emptyHoles.length === 1) {
+      createMole(emptyHoles[0]);
     }
 
+    if(emptyHoles.length > 1) {
+      add();
+    }
   }
 
-  return { add: add, reset: reset, stop: stop };
+  /* EXPOSE METHODS ************************************************************************/
+  return { add: add, clicked: clicked, reset: reset };
 
 })();
