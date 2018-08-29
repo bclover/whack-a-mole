@@ -51,6 +51,7 @@ var game = (function(){
   function stop() {
     paused = true;
     clearInterval(timer);
+    mole.reset();
     ui.msg(MSG_PAUSED);
     ui.setControls('stop');
   }
