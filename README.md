@@ -21,9 +21,14 @@ https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-co
 #### Possible Enhancements:
 * Create a High Score List
 * Dynamically create holes & moles on init()
-* Add sound effects
+* Allow user to enter a time limit
 * Add CSS transitions / effects
 * Move text into a "Constants Closure"
-* Use a JS framework
 * Optimize CSS & use BEM syntax better
-* Make WCAG 2.0 Accessibility Compliant
+* Make Accessible to WCAG 2.0 Standard
+* Make "mole taunts" when click misses (random couple of sounds)
+* Add "ouch sounds" for when mole is hit
+* Add CSS effect when mole is hit
+* Use a JS framework
+
+
