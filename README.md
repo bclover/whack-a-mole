@@ -18,18 +18,23 @@ https://alligator.io/css/minimal-css-reset
 #### Countdown Timer:
 https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
 
+#### Custom Cursor Info
+https://stackoverflow.com/questions/27858599/custom-mouse-pointer-not-working-in-ie11
+https://css-tricks.com/almanac/properties/c/cursor/
+
 #### Possible Enhancements:
 * Create a High Score List
 * Dynamically create holes & moles on init()
 * Allow user to enter a time limit
-* Add CSS transitions / effects
 * Move text into a "Constants Closure"
 * Optimize CSS & use BEM syntax better
 * Make Accessible to WCAG 2.0 Standard
-* Add CSS effects when mole is hit
-* Add CSS effects to make mole appear to rise out of or go down in hole
+* Add visual effects when mole is hit
+* Add effects to make mole appear to rise out of or go down in hole
+* Animate mallet on click?
 * Add media queries to tweak CSS for various sizes / devices / aspect ratios
 * Make a fancy countdown circle thingy instead of using text to display time.
-* Use a JS framework
+* Build aVue, Angular, React JS version
+* Add unit testing
 
 
