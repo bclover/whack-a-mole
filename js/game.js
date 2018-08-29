@@ -1,18 +1,15 @@
 /* Game Controller */
 var game = (function(){
 
-  var BTN_RESET = 'btnReset';
-  var BTN_START = 'btnStart';
-  var BTN_STOP = 'btnStop';
+  // Constants
   var SECOND = 1000;
   var MAX_TIME = 20;
   var MSG_GAME_OVER = 'Game Over! Click Reset to Replenish the Clock!';
   var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
   var MSG_START = 'Click Start to Begin!';
   var MSG_WHACK = 'CLICK THOSE DANGNABBIT MOLES!';
-  var MSG_WHEN_READY = 'Click Start When You\'re Ready!';
-  var TIME = 'time';
 
+  // private members
   var paused = true;
   var resumeTime;
   var timer;
@@ -25,14 +22,12 @@ var game = (function(){
   }
 
   function init() {
-    ui.disable(BTN_RESET);
-    ui.enable(BTN_START);
-    ui.disable(BTN_STOP);
+    ui.setControls();
     ui.msg(MSG_START);
   }
 
-  function isPaused() {
-    return paused;
+  function isNotPaused() {
+    return !paused;
   }
 
   function reset() {
@@ -41,49 +36,39 @@ var game = (function(){
     timeLeft = MAX_TIME;
     mole.reset();
     score.reset();
-    ui.time(timeLeft);
-    ui.show(TIME);
-    ui.msg(MSG_WHEN_READY);
-    ui.disable(BTN_RESET);
-    ui.enable(BTN_START);
-    ui.disable(BTN_STOP);
+    ui.reset(timeLeft);
+    ui.setControls();
   }
 
   function start() {
     paused = false;
     timer = setInterval(updateTimer, SECOND);
-    ui.msg(MSG_WHACK);
     mole.add();
-    ui.enable(BTN_RESET);
-    ui.disable(BTN_START);
-    ui.enable(BTN_STOP);
+    ui.msg(MSG_WHACK);
+    ui.setControls('start');
   }
 
   function stop() {
-    clearInterval(timer);
     paused = true;
+    clearInterval(timer);
     ui.msg(MSG_PAUSED);
-    ui.enable(BTN_RESET);
-    ui.enable(BTN_START);
-    ui.disable(BTN_STOP);
+    ui.setControls('stop');
   }
 
   /* PRIVATE METHODS ************************************************************************/
 
-  function ended() {
+  function gameOver() {
     paused = true;
     clearInterval(timer);
     ui.msg(MSG_GAME_OVER);
-    ui.enable(BTN_RESET);
-    ui.disable(BTN_START);
-    ui.disable(BTN_STOP);
+    ui.setControls('end');
   }
 
   function updateTimer() {
     (resumeTime) ? timeLeft = resumeTime : timeLeft = timeLeft;
-    ui.time(--timeLeft);
+    ui.updateTime(--timeLeft);
     if (timeLeft === 0) {
-      ended();
+      gameOver();
     }
   }
 
@@ -91,7 +76,7 @@ var game = (function(){
   return {
     getTimeLeft: getTimeLeft,
     init: init,
-    isPaused: isPaused,
+    isNotPaused: isNotPaused,
     reset: reset,
     start: start,
     stop: stop
@@ -99,4 +84,5 @@ var game = (function(){
 
 })();
 
+// Let's Get It Started!
 game.init();

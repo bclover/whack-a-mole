@@ -24,7 +24,7 @@ var mole = (function(){
   }
 
   function clicked(event) {
-    if(!game.isPaused()) {
+    if(game.isNotPaused()) {
       score.increment(event);
       var id = event.target.id.charAt(1);
       destroyMole(id);
@@ -32,7 +32,7 @@ var mole = (function(){
   }
 
   function reset() {
-    hideAllMoles();
+    ui.hideAllMoles();
     clearArrays();
   }
 
@@ -44,21 +44,21 @@ var mole = (function(){
   }
 
   function createMole(int) {
-    var moleNum = parseInt(int, RADIX);
-    show(moleNum, MOLE);
-    hide(moleNum, HOLE);
-    visibleMoles.push(moleNum);
-    emptyHoles.splice(emptyHoles.indexOf(moleNum), 1);
+    var tileNum = parseInt(int, RADIX);
+    show(tileNum, MOLE);
+    hide(tileNum, HOLE);
+    visibleMoles.push(tileNum);
+    emptyHoles.splice(emptyHoles.indexOf(tileNum), 1);
     startMoleLife();
   }
 
   function destroyMole(int) {
     if(int !== undefined) {
-      var moleNum = parseInt(int, RADIX);
-      show(moleNum, HOLE);
-      hide(moleNum, MOLE);
-      emptyHoles.push(moleNum);
-      var moleToRemove = visibleMoles.indexOf(moleNum);
+      var tileNum = parseInt(int, RADIX);
+      show(tileNum, HOLE);
+      hide(tileNum, MOLE);
+      emptyHoles.push(tileNum);
+      var moleToRemove = visibleMoles.indexOf(tileNum);
       visibleMoles.splice(moleToRemove, 1);
     }
   }
@@ -66,7 +66,7 @@ var mole = (function(){
   function endMoleLife() {
     destroyMole(visibleMoles[0]);
     clearInterval(moleLifeTimer);
-    if(game.getTimeLeft() > 0 && !game.isPaused()){
+    if(game.getTimeLeft() > 0 && game.isNotPaused()){
       add();
     }
   }
@@ -81,24 +81,10 @@ var mole = (function(){
     ui.hide(id);
   }
 
-  function hideAllMoles() {
-    if (visibleMoles.length > 0) {
-      var limit = MAX_NUM_OF_MOLES+1;
-      for (var i = 0; i < limit; i++) {
-        show(visibleMoles[ i ], HOLE);
-        hide(visibleMoles[ i ], MOLE);
-      }
-    }
-  }
-
   function holeIsEmpty(int) {
     var holeNum = parseInt(int, RADIX);
     var index = emptyHoles.indexOf(holeNum);
-    if (index > -1) {
-      return true;
-    } else {
-      return false;
-    }
+    return (index > -1);
   }
 
   function show(int, obj) {
@@ -114,9 +100,7 @@ var mole = (function(){
   function tryAnotherHole() {
     if(emptyHoles.length === 1) {
       createMole(emptyHoles[0]);
-    }
-
-    if(emptyHoles.length > 1) {
+    } else if(emptyHoles.length > 1) {
       mole.add();
     }
   }
