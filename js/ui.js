@@ -10,7 +10,6 @@ var ui = (function(document){
   var LABEL_TIME = 'Time: ';
   var MAX_NUM_OF_MOLES = 9;
   var MOLE = 'mole';
-  var MSG_WHEN_READY = 'Click Start When You\'re Ready!';
   var TIME = 'time';
 
   /* PUBLIC METHODS ************************************************************************/
@@ -37,7 +36,7 @@ var ui = (function(document){
   function reset(totalTime) {
     updateTime(totalTime);
     show(TIME);
-    msg(MSG_WHEN_READY);
+    msg(txt.get('MSG_WHEN_READY'));
   }
 
   function setControls(state) {

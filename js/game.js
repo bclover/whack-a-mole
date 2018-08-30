@@ -4,10 +4,6 @@ var game = (function(){
   // Constants
   var SECOND = 1000;
   var MAX_TIME = 20;
-  var MSG_GAME_OVER = 'Game Over! Click Restart to Replenish the Clock!';
-  var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
-  var MSG_START = 'Click Start to Begin!';
-  var MSG_WHACK = 'CLICK THOSE DANGNABBIT MOLES!';
 
   // private members
   var paused = true;
@@ -23,7 +19,7 @@ var game = (function(){
 
   function init() {
     ui.setControls();
-    ui.msg(MSG_START);
+    ui.msg(txt.get('MSG_START'));
   }
 
   function isNotPaused() {
@@ -47,7 +43,7 @@ var game = (function(){
     paused = false;
     timer = setInterval(updateTimer, SECOND);
     mole.add();
-    ui.msg(MSG_WHACK);
+    ui.msg(txt.get('MSG_WHACK'));
     ui.setControls('start');
   }
 
@@ -55,7 +51,7 @@ var game = (function(){
     paused = true;
     clearInterval(timer);
     mole.reset();
-    ui.msg(MSG_PAUSED);
+    ui.msg(txt.get('MSG_PAUSED'));
     ui.setControls('stop');
   }
 
@@ -64,7 +60,7 @@ var game = (function(){
   function gameOver() {
     paused = true;
     clearInterval(timer);
-    ui.msg(MSG_GAME_OVER);
+    ui.msg(txt.get('MSG_GAME_OVER'));
     ui.setControls('end');
     sound.playSound('gameOver');
   }
