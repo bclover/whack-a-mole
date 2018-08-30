@@ -31,16 +31,15 @@ During development, the game is tested in the following browsers:
 * Create a High Score List
 * Dynamically create holes & moles on init()
 * Allow user to enter a time limit
-* Move text into a "Constants Closure"
+* ~~Move text into a "Constants Closure"~~
 * Optimize CSS & use BEM syntax better
 * Make Accessible to WCAG 2.0 Standard
 * Add visual effects when mole is hit
 * Add effects to make mole appear to rise out of or go down in hole
-* Animate mallet on click?
+* Animate mallet on click
 * Add media queries to tweak CSS for various sizes / devices / aspect ratios
 * Make a fancy countdown circle thingy instead of using text to display time.
 * Build a Vue, Angular, React JS version
-* Add a grassy background
 * Add unit testing
 
 
