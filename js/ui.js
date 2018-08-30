@@ -1,6 +1,6 @@
 /* UI Controller */
 
-var ui = (function(document){
+var ui = (function(){
 
   /* PUBLIC METHODS ************************************************************************/
 
@@ -109,4 +109,4 @@ var ui = (function(document){
     updateTime: updateTime
   };
 
-})(document);
+})();
