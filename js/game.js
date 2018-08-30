@@ -1,22 +1,11 @@
 /* Game Controller */
 var game = (function(){
 
-  var BTN_RESET = 'btnReset';
-  var BTN_START = 'btnStart';
-  var BTN_STOP = 'btnStop';
-  var SECOND = 1000;
-  var MAX_TIME = 20;
-  var MSG_GAME_OVER = 'Game Over! Click Reset to Replenish the Clock!';
-  var MSG_PAUSED = 'Game Paused. Click Start to Continue!';
-  var MSG_START = 'Click Start to Begin!';
-  var MSG_WHACK = 'CLICK THOSE DANGNABBIT MOLES!';
-  var MSG_WHEN_READY = 'Click Start When You\'re Ready!';
-  var TIME = 'time';
-
+  // private members
   var paused = true;
   var resumeTime;
   var timer;
-  var timeLeft = MAX_TIME;
+  var timeLeft = cnst.get('MAX_TIME');
 
   /* PUBLIC METHODS ************************************************************************/
 
@@ -25,65 +14,59 @@ var game = (function(){
   }
 
   function init() {
-    ui.disable(BTN_RESET);
-    ui.enable(BTN_START);
-    ui.disable(BTN_STOP);
-    ui.msg(MSG_START);
+    ui.setControls();
+    ui.msg(txt.get('MSG_START'));
   }
 
-  function isPaused() {
-    return paused;
+  function isNotPaused() {
+    return !paused;
   }
 
   function reset() {
+    paused = true;
+    sound.playSound(cnst.get('SND_RESTART'));
     clearInterval(timer);
     resumeTime = null;
-    timeLeft = MAX_TIME;
+    timeLeft = cnst.get('MAX_TIME');
     mole.reset();
     score.reset();
-    ui.time(timeLeft);
-    ui.show(TIME);
-    ui.msg(MSG_WHEN_READY);
-    ui.disable(BTN_RESET);
-    ui.enable(BTN_START);
-    ui.disable(BTN_STOP);
+    ui.reset(timeLeft);
+    ui.setControls();
   }
 
   function start() {
+    sound.playSound(cnst.get('SND_BEGIN'));
     paused = false;
-    timer = setInterval(updateTimer, SECOND);
-    ui.msg(MSG_WHACK);
+    timer = setInterval(updateTimer, cnst.get('SECOND'));
     mole.add();
-    ui.enable(BTN_RESET);
-    ui.disable(BTN_START);
-    ui.enable(BTN_STOP);
+    ui.msg(txt.get('MSG_WHACK'));
+    ui.setControls(cnst.get('START'));
   }
 
   function stop() {
-    clearInterval(timer);
     paused = true;
-    ui.msg(MSG_PAUSED);
-    ui.enable(BTN_RESET);
-    ui.enable(BTN_START);
-    ui.disable(BTN_STOP);
+    clearInterval(timer);
+    mole.reset();
+    ui.msg(txt.get('MSG_PAUSED'));
+    ui.setControls(cnst.get('STOP'));
   }
 
   /* PRIVATE METHODS ************************************************************************/
 
-  function ended() {
+  function gameOver() {
     paused = true;
     clearInterval(timer);
-    ui.msg(MSG_GAME_OVER);
-    ui.enable(BTN_RESET);
-    ui.disable(BTN_START);
-    ui.disable(BTN_STOP);
+    ui.msg(txt.get('MSG_GAME_OVER'));
+    ui.setControls(cnst.get('END'));
+    sound.playSound(cnst.get('SND_END'));
   }
 
   function updateTimer() {
     (resumeTime) ? timeLeft = resumeTime : timeLeft = timeLeft;
-    ui.time(--timeLeft);
+    sound.playSound(cnst.get('SND_TICK'));
+    ui.updateTime(--timeLeft);
     if (timeLeft === 0) {
-      ended();
+      gameOver();
     }
   }
 
@@ -91,7 +74,7 @@ var game = (function(){
   return {
     getTimeLeft: getTimeLeft,
     init: init,
-    isPaused: isPaused,
+    isNotPaused: isNotPaused,
     reset: reset,
     start: start,
     stop: stop
@@ -99,4 +82,5 @@ var game = (function(){
 
 })();
 
+// Let's Get It Started!
 game.init();

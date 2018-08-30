@@ -7,18 +7,18 @@ var score = (function(){
 
   function increment(event) {
       ++value;
-      ui.score(value);
+      ui.updateScore(value);
       ui.hide(event.target.id);
-      var hole = event.target.id.slice(0,3) + 'hole';
-      ui.show(hole);
+      var holeElement = event.target.id.slice(0,3) + cnst.get('HOLE');
+      ui.show(holeElement);
   }
 
   function reset() {
     value = 0;
-    ui.score(value);
+    ui.updateScore(value);
   }
 
   /* EXPOSE METHODS ************************************************************************/
   return { increment: increment, reset: reset };
 
-})(document);
+})();
