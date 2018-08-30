@@ -11,7 +11,6 @@ var sound = (function(){
     var dir = cnst.get('AUDIO_DIR');
     var sound;
 
-
     if(type === cnst.get('TAUNT') && game.isNotPaused()) {  // make sure the game isn't paused before playing a taunt
       var taunt = chooseTaunt(int);
       sound =  new Audio(dir + taunt);

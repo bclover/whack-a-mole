@@ -26,7 +26,9 @@ var mole = (function(){
   }
 
   function escaped() {
-    sound.playSound(cnst.get('TAUNT'), getRandomInt(1, cnst.get('NUM_OF_TAUNTS')));
+    if(game.isNotPaused()){
+      sound.playSound(cnst.get('TAUNT'), getRandomInt(1, cnst.get('NUM_OF_TAUNTS')));
+    }
   }
 
   function reset() {
@@ -43,18 +45,22 @@ var mole = (function(){
 
   function createMole(int) {
     var tileNum = parseInt(int, cnst.get('RADIX'));
-    show(tileNum, cnst.get('MOLE'));
-    hide(tileNum, cnst.get('HOLE'));
+    ui.show(createId(tileNum, cnst.get('MOLE')));
+    ui.hide(createId(tileNum, cnst.get('HOLE')));
     visibleMoles.push(tileNum);
     emptyHoles.splice(emptyHoles.indexOf(tileNum), 1);
     startMoleLife();
   }
 
+  function createId(int, obj) {
+    return 't' + int + '-' + obj;
+  }
+
   function destroyMole(int) {
     if(int !== undefined) {
       var tileNum = parseInt(int, cnst.get('RADIX'));
-      show(tileNum, cnst.get('HOLE'));
-      hide(tileNum, cnst.get('MOLE'));
+      ui.show(createId(tileNum, cnst.get('HOLE')));
+      ui.hide(createId(tileNum, cnst.get('MOLE')));
       emptyHoles.push(tileNum);
       var moleToRemove = visibleMoles.indexOf(tileNum);
       visibleMoles.splice(moleToRemove, 1);
@@ -74,20 +80,10 @@ var mole = (function(){
     return num;
   }
 
-  function hide(int, obj) {
-    var id = 't' + int + '-' + obj;
-    ui.hide(id);
-  }
-
   function holeIsEmpty(int) {
     var holeNum = parseInt(int, cnst.get('RADIX'));
     var index = emptyHoles.indexOf(holeNum);
     return (index > -1);
-  }
-
-  function show(int, obj) {
-    var id = 't' + int + '-' + obj;
-    ui.show(id);
   }
 
   function startMoleLife() {
