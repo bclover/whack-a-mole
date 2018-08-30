@@ -1,7 +1,6 @@
 /* Score Controller */
 var score = (function(){
 
-  const HOLE = 'hole';
   var value = 0;
 
   /* PUBLIC METHODS ************************************************************************/
@@ -10,8 +9,8 @@ var score = (function(){
       ++value;
       ui.updateScore(value);
       ui.hide(event.target.id);
-      var hole = event.target.id.slice(0,3) + HOLE;
-      ui.show(hole);
+      var holeElement = event.target.id.slice(0,3) + cnst.get('HOLE');
+      ui.show(holeElement);
   }
 
   function reset() {

@@ -2,73 +2,34 @@
 var sound = (function(){
 
   // PUBLIC MEMBERS
-  var TAUNTS = ['laugh1.mp3', 'laugh2.mp3', 'raspberry.mp3', 'uh-oh.mp3'];
-
-  // PRIVATE MEMBERS
-  var AUDIO_DIR = '../audio/';
-  var BEGIN = 'begin';
-  var GAME_OVER = 'gameOver';
-  var RESTART = 'restart';
-  var TAUNT = 'taunt';
-  var TICK = 'tick';
-  var WHACK = 'whack';
+  var taunts = [cnst.get('TAUNT1'), cnst.get('TAUNT2'), cnst.get('TAUNT3'), cnst.get('TAUNT4')];
 
   /* PUBLIC METHODS ************************************************************************/
 
   function playSound(type, int) {
-    var file;
 
-    switch(type) {
+    var dir = cnst.get('AUDIO_DIR');
+    var sound;
 
-      case BEGIN:
-        file = 'begin.mp3';
-        perform(file);
-        break;
 
-      case GAME_OVER:
-        file = 'end.mp3';
-        perform(file);
-        break;
-
-      case RESTART:
-        file = 'restart.mp3';
-        perform(file);
-        break;
-
-      case TAUNT:
-        if(game.isNotPaused()){
-          file = chooseTaunt(int);
-          perform(file);
-        }
-        break;
-
-      case TICK:
-        file = 'tick.mp3';
-        perform(file);
-        break;
-
-      case WHACK:
-        file = 'whack.mp3';
-        perform(file);
-        break;
-
-      default:
-        break;
+    if(type === cnst.get('TAUNT') && game.isNotPaused()) {  // make sure the game isn't paused before playing a taunt
+      var taunt = chooseTaunt(int);
+      sound =  new Audio(dir + taunt);
+      sound.play();
+    } else {                                                // other sounds should always play
+      sound = new Audio(dir + type);
+      sound.play();
     }
   }
 
   /* PRIVATED METHODS ************************************************************************/
 
-  function perform(file) {
-    var sound = new Audio(AUDIO_DIR + file);
-    sound.play();
-  }
   function chooseTaunt(int) {
-    var selectedTaunt = TAUNTS[int-1];
+    var selectedTaunt = taunts[int-1];
     return selectedTaunt;
   }
 
   /* EXPOSE METHODS & MEMBERS ****************************************************************/
-  return { playSound: playSound, TAUNTS: TAUNTS};
+  return { playSound: playSound };
 
 })();

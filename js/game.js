@@ -1,15 +1,11 @@
 /* Game Controller */
 var game = (function(){
 
-  // Constants
-  var SECOND = 1000;
-  var MAX_TIME = 20;
-
   // private members
   var paused = true;
   var resumeTime;
   var timer;
-  var timeLeft = MAX_TIME;
+  var timeLeft = cnst.get('MAX_TIME');
 
   /* PUBLIC METHODS ************************************************************************/
 
@@ -28,10 +24,10 @@ var game = (function(){
 
   function reset() {
     paused = true;
-    sound.playSound('restart');
+    sound.playSound(cnst.get('SND_RESTART'));
     clearInterval(timer);
     resumeTime = null;
-    timeLeft = MAX_TIME;
+    timeLeft = cnst.get('MAX_TIME');
     mole.reset();
     score.reset();
     ui.reset(timeLeft);
@@ -39,12 +35,12 @@ var game = (function(){
   }
 
   function start() {
-    sound.playSound('begin');
+    sound.playSound(cnst.get('SND_BEGIN'));
     paused = false;
-    timer = setInterval(updateTimer, SECOND);
+    timer = setInterval(updateTimer, cnst.get('SECOND'));
     mole.add();
     ui.msg(txt.get('MSG_WHACK'));
-    ui.setControls('start');
+    ui.setControls(cnst.get('START'));
   }
 
   function stop() {
@@ -52,7 +48,7 @@ var game = (function(){
     clearInterval(timer);
     mole.reset();
     ui.msg(txt.get('MSG_PAUSED'));
-    ui.setControls('stop');
+    ui.setControls(cnst.get('STOP'));
   }
 
   /* PRIVATE METHODS ************************************************************************/
@@ -61,13 +57,13 @@ var game = (function(){
     paused = true;
     clearInterval(timer);
     ui.msg(txt.get('MSG_GAME_OVER'));
-    ui.setControls('end');
-    sound.playSound('gameOver');
+    ui.setControls(cnst.get('END'));
+    sound.playSound(cnst.get('SND_END'));
   }
 
   function updateTimer() {
     (resumeTime) ? timeLeft = resumeTime : timeLeft = timeLeft;
-    sound.playSound('tick');
+    sound.playSound(cnst.get('SND_TICK'));
     ui.updateTime(--timeLeft);
     if (timeLeft === 0) {
       gameOver();

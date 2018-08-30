@@ -1,13 +1,6 @@
 /* Mole Controller */
 var mole = (function(){
 
-  var HOLE = 'hole';
-  var MAX_NUM_OF_MOLES = 9;
-  var LIFE_MAX = 2000;
-  var LIFE_MIN = 250;
-  var MOLE = 'mole';
-  var RADIX = 10;
-
   var emptyHoles = [1,2,3,4,5,6,7,8,9];
   var moleLifeTimer = [];
   var visibleMoles = [];
@@ -15,7 +8,7 @@ var mole = (function(){
   /* PUBLIC METHODS ************************************************************************/
 
   function add() {
-    var int = getRandomInt(1, MAX_NUM_OF_MOLES);
+    var int = getRandomInt(1, cnst.get('MAX_NUM_OF_MOLES'));
     if (holeIsEmpty(int)) {
       createMole(int);
     } else {
@@ -25,7 +18,7 @@ var mole = (function(){
 
   function clicked(event) {
     if(game.isNotPaused()) {
-      sound.playSound('whack');
+      sound.playSound(cnst.get('SND_WHACK'));
       score.increment(event);
       var id = event.target.id.charAt(1);
       destroyMole(id);
@@ -33,7 +26,7 @@ var mole = (function(){
   }
 
   function escaped() {
-    sound.playSound('taunt', getRandomInt(1, sound.TAUNTS.length));
+    sound.playSound(cnst.get('TAUNT'), getRandomInt(1, cnst.get('NUM_OF_TAUNTS')));
   }
 
   function reset() {
@@ -49,9 +42,9 @@ var mole = (function(){
   }
 
   function createMole(int) {
-    var tileNum = parseInt(int, RADIX);
-    show(tileNum, MOLE);
-    hide(tileNum, HOLE);
+    var tileNum = parseInt(int, cnst.get('RADIX'));
+    show(tileNum, cnst.get('MOLE'));
+    hide(tileNum, cnst.get('HOLE'));
     visibleMoles.push(tileNum);
     emptyHoles.splice(emptyHoles.indexOf(tileNum), 1);
     startMoleLife();
@@ -59,9 +52,9 @@ var mole = (function(){
 
   function destroyMole(int) {
     if(int !== undefined) {
-      var tileNum = parseInt(int, RADIX);
-      show(tileNum, HOLE);
-      hide(tileNum, MOLE);
+      var tileNum = parseInt(int, cnst.get('RADIX'));
+      show(tileNum, cnst.get('HOLE'));
+      hide(tileNum, cnst.get('MOLE'));
       emptyHoles.push(tileNum);
       var moleToRemove = visibleMoles.indexOf(tileNum);
       visibleMoles.splice(moleToRemove, 1);
@@ -87,7 +80,7 @@ var mole = (function(){
   }
 
   function holeIsEmpty(int) {
-    var holeNum = parseInt(int, RADIX);
+    var holeNum = parseInt(int, cnst.get('RADIX'));
     var index = emptyHoles.indexOf(holeNum);
     return (index > -1);
   }
@@ -98,13 +91,8 @@ var mole = (function(){
   }
 
   function startMoleLife() {
-    var lifeTime = getRandomInt(LIFE_MIN, LIFE_MAX);
+    var lifeTime = getRandomInt(cnst.get('LIFE_MIN'), cnst.get('LIFE_MAX'));
     moleLifeTimer = setInterval(function() { endMoleLife(); }, lifeTime);
-  }
-
-  function tauntUser(taunt) {
-    var taunt = new Audio(AUDIO_DIR + taunt);
-    taunt.play();
   }
 
   function tryAnotherHole() {
