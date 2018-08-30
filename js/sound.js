@@ -10,18 +10,18 @@ var sound = (function(){
 
     var dir = cnst.get('AUDIO_DIR');
     var sound;
+    var file;
 
-    if(type === cnst.get('TAUNT') && game.isNotPaused()) {  // make sure the game isn't paused before playing a taunt
-      var taunt = chooseTaunt(int);
-      sound =  new Audio(dir + taunt);
-      sound.play();
-    } else {                                                // other sounds should always play
-      sound = new Audio(dir + type);
-      sound.play();
+    if(type === cnst.get('TAUNT')) {
+      file = chooseTaunt(int);
+    } else {
+      file = type;
     }
+    sound = new Audio(dir + file);
+    sound.play();
   }
 
-  /* PRIVATED METHODS ************************************************************************/
+  /* PRIVATE METHODS ************************************************************************/
 
   function chooseTaunt(int) {
     var selectedTaunt = taunts[int-1];
