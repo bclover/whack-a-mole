@@ -1,9 +1,6 @@
 /* Sound Controller */
 var sound = (function(){
 
-  // PUBLIC MEMBERS
-  var taunts = [cnst.get('TAUNT1'), cnst.get('TAUNT2'), cnst.get('TAUNT3'), cnst.get('TAUNT4')];
-
   /* PUBLIC METHODS ************************************************************************/
 
   function playSound(type, int) {
@@ -24,6 +21,7 @@ var sound = (function(){
   /* PRIVATE METHODS ************************************************************************/
 
   function chooseTaunt(int) {
+    var taunts = [cnst.get('TAUNT1'), cnst.get('TAUNT2'), cnst.get('TAUNT3'), cnst.get('TAUNT4')];
     var selectedTaunt = taunts[int-1];
     return selectedTaunt;
   }

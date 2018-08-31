@@ -33,12 +33,12 @@ var mole = (function(){
 
   function reset() {
     ui.hideAllMoles();
-    clearArrays();
+    resetMolesAndHoles();
   }
 
   /* PRIVATE METHODS ************************************************************************/
 
-  function clearArrays() {
+  function resetMolesAndHoles() {
     emptyHoles = [1,2,3,4,5,6,7,8,9];
     visibleMoles = [];
   }
