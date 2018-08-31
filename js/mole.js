@@ -2,7 +2,7 @@
 var mole = (function(){
 
   var emptyHoles = [1,2,3,4,5,6,7,8,9];
-  var moleLifeTimer = [];
+  var moleLifeTimer;
   var visibleMoles = [];
 
   /* PUBLIC METHODS ************************************************************************/
