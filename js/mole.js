@@ -33,15 +33,11 @@ var mole = (function(){
 
   function reset() {
     ui.hideAllMoles();
-    resetMolesAndHoles();
-  }
-
-  /* PRIVATE METHODS ************************************************************************/
-
-  function resetMolesAndHoles() {
     emptyHoles = [1,2,3,4,5,6,7,8,9];
     visibleMoles = [];
   }
+
+  /* PRIVATE METHODS ************************************************************************/
 
   function createMole(int) {
     var tileNum = parseInt(int, cnst.get('RADIX'));
