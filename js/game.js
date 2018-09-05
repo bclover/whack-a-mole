@@ -5,7 +5,7 @@ var game = (function(){
   var paused = true;
   var resumeTime;
   var timer;
-  var timeLeft = cnst.get('MAX_TIME');
+  var timeLeft = App.Const.MAX_TIME;
 
   /* PUBLIC METHODS ************************************************************************/
 
@@ -15,7 +15,7 @@ var game = (function(){
 
   function init() {
     ui.setControls();
-    ui.msg(txt.get('MSG_START'));
+    ui.msg(App.Text.START);
   }
 
   function isNotPaused() {
@@ -24,10 +24,10 @@ var game = (function(){
 
   function reset() {
     paused = true;
-    sound.playSound(cnst.get('SND_RESTART'));
+    sound.playSound(App.Const.SND_RESTART);
     clearInterval(timer);
     resumeTime = null;
-    timeLeft = cnst.get('MAX_TIME');
+    timeLeft = App.Const.MAX_TIME;
     mole.reset();
     score.reset();
     ui.reset(timeLeft);
@@ -35,20 +35,20 @@ var game = (function(){
   }
 
   function start() {
-    sound.playSound(cnst.get('SND_BEGIN'));
+    sound.playSound(App.Const.SND_BEGIN);
     paused = false;
-    timer = setInterval(updateTimer, cnst.get('SECOND'));
+    timer = setInterval(updateTimer, App.Const.SECOND);
     mole.add();
-    ui.msg(txt.get('MSG_WHACK'));
-    ui.setControls(cnst.get('START'));
+    ui.msg(App.Text.WHACK);
+    ui.setControls(App.Const.START);
   }
 
   function stop() {
     paused = true;
     clearInterval(timer);
     mole.reset();
-    ui.msg(txt.get('MSG_PAUSED'));
-    ui.setControls(cnst.get('STOP'));
+    ui.msg(App.Text.PAUSED);
+    ui.setControls(App.Const.STOP);
   }
 
   /* PRIVATE METHODS ************************************************************************/
@@ -56,14 +56,14 @@ var game = (function(){
   function gameOver() {
     paused = true;
     clearInterval(timer);
-    ui.msg(txt.get('MSG_GAME_OVER'));
-    ui.setControls(cnst.get('END'));
-    sound.playSound(cnst.get('SND_END'));
+    ui.msg(App.Text.GAME_OVER);
+    ui.setControls(App.Const.END);
+    sound.playSound(App.Const.SND_END);
   }
 
   function updateTimer() {
     (resumeTime) ? timeLeft = resumeTime : timeLeft = timeLeft;
-    sound.playSound(cnst.get('SND_TICK'));
+    sound.playSound(App.Const.SND_TICK);
     ui.updateTime(--timeLeft);
     if (timeLeft === 0) {
       gameOver();

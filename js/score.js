@@ -9,7 +9,7 @@ var score = (function(){
       ++value;
       ui.updateScore(value);
       ui.hide(event.target.id);
-      var holeElement = event.target.id.slice(0,3) + cnst.get('HOLE');
+      var holeElement = event.target.id.slice(0,3) + App.Const.HOLE;
       ui.show(holeElement);
   }
 

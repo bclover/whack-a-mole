@@ -1,14 +1,27 @@
-/* Text Controller */
-var txt = (function() {
-  var private = {
-    'MSG_GAME_OVER': 'Game Over! Click Restart to Replenish the Clock!',
-    'MSG_PAUSED': 'Game Paused. Click Start to Continue!',
-    'MSG_START': 'Click Start to Begin!',
-    'MSG_WHACK': 'CLICK THOSE DANGNABBIT MOLES!',
-    'MSG_WHEN_READY': 'Click Start When You\'re Ready!'
-  };
+/* Text */
 
-  return {
-    get: function(name) { return private[name]; }
-  };
-})();
+//App Namespace
+(function (App) {
+
+  //App.Const Namespace
+  (function (Text) {
+
+    //Private
+    function setText(name, val) {
+      Object.defineProperty(App.Text, name, {
+        value: val,
+        writable: false
+      });
+    }
+
+    //Public
+    Text.GAME_OVER = setText('GAME_OVER', 'Game Over! Click Restart to Replenish the Clock!');
+    Text.PAUSED = setText('PAUSED', 'Game Paused. Click Start to Continue!');
+    Text.START = setText('START', 'Click Start to Begin!');
+    Text.WHACK = setText('WHACK', 'CLICK THOSE DANGNABBIT MOLES!');
+    Text.WHEN_READY = setText('WHEN_READY', 'Click Start When You\'re Ready!');
+
+    App.Text = Text;
+
+  })(App.Text || (App.Text = {}));
+})(App || (App = {}));

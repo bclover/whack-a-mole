@@ -5,11 +5,11 @@ var sound = (function(){
 
   function playSound(type, int) {
 
-    var dir = cnst.get('AUDIO_DIR');
+    var dir = App.Const.AUDIO_DIR;
     var sound;
     var file;
 
-    if(type === cnst.get('TAUNT')) {
+    if(type === App.Const.TAUNT) {
       file = chooseTaunt(int);
     } else {
       file = type;
@@ -21,7 +21,7 @@ var sound = (function(){
   /* PRIVATE METHODS ************************************************************************/
 
   function chooseTaunt(int) {
-    var taunts = [cnst.get('TAUNT1'), cnst.get('TAUNT2'), cnst.get('TAUNT3'), cnst.get('TAUNT4')];
+    var taunts = [App.Const.TAUNT1, App.Const.TAUNT2, App.Const.TAUNT3, App.Const.TAUNT4];
     var selectedTaunt = taunts[int-1];
     return selectedTaunt;
   }
